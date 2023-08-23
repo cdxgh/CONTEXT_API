@@ -1,6 +1,11 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const ConterContext = createContext(null);
 export const CounterProvider = (props) => {
-  return <ConterContext.Provider>{props.children}</ConterContext.Provider>;
+  const [count, setCount] = useState(0);
+  return (
+    <ConterContext.Provider value={{ count, setCount }}>
+      {props.children}
+    </ConterContext.Provider>
+  );
 };
